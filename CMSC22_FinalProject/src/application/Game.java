@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -58,7 +59,7 @@ public class Game {
     	});
     	
     	developers.setOnAction(e->{
-    		//developers page
+    		developersPage();
     	});
     	
     	mainMenu.getChildren().addAll(newgame, about, developers);
@@ -66,6 +67,7 @@ public class Game {
     	
     	this.root = new Group();
     	this.scene = new Scene(mainMenu, 1280, 720);
+    	this.scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
     	stage.setScene(scene);
     	this.stage.show();
     }
@@ -88,7 +90,38 @@ public class Game {
     	});
     	
     	this.scene = new Scene(about, 1280, 720);
+    	this.scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
     	stage.setScene(scene);
     	this.stage.show();
     }
+    
+    public void developersPage() {
+        StackPane developers = new StackPane();
+        
+        VBox content = new VBox(10);
+        content.setAlignment(Pos.TOP_LEFT); 
+        
+        Label header = new Label("DEVELOPERS");
+        header.setFont(Font.font("Showcard Gothic", 20));
+        
+        Text yssa = new Text("Yssa Gabrielle Magpili");
+        Text rin = new Text("Tanya Marinelle Manaoat");
+        Text raven = new Text("John Raven Caduyac");
+        
+        content.getChildren().addAll(header, yssa, rin, raven);
+        
+        developers.getChildren().add(content);
+
+        Button goBack = new Button("Go Back to Main Menu");
+        StackPane.setAlignment(goBack, Pos.BOTTOM_LEFT);
+        developers.getChildren().add(goBack);
+        
+        goBack.setOnAction(e -> mainMenu());
+        
+        this.scene = new Scene(developers, 1280, 720);
+        this.scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+        stage.setScene(scene);
+        this.stage.show();
+    }
+
 }
