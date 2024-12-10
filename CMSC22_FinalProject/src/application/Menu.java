@@ -233,6 +233,7 @@ public class Menu{
 		
 		buttonIns.setOnAction(e -> stage.setScene(this.sceneInstruc));
 		buttonPlay.setOnAction(e -> stage.setScene(this.scenePick));
+		this.sceneAbt = Developers.getDevelopersScene(stage);
 		buttonAbt.setOnAction(e -> stage.setScene(this.sceneAbt));
 		buttonBack1.setOnAction(e -> stage.setScene(this.sceneMenu));
 		buttonBack2.setOnAction(e -> stage.setScene(this.sceneMenu));
